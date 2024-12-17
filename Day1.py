@@ -29,7 +29,24 @@ def fillList(Arr1, Arr2, text):
 
 
         
-# def findDifference():
+
+# Second Half of Question
+def countSimilarity(arr1, arr2):
+    
+    valueCounts = defaultdict(int)
+
+    for value in arr2:
+        valueCounts[value] += 1
+
+    finalCount = 0
+
+    for value in arr1:
+        x = valueCounts[value]
+
+        if(x > 0):
+            finalCount += x * value
+
+    return finalCount
 
 
 
@@ -38,28 +55,34 @@ def fillList(Arr1, Arr2, text):
 def main():
 
     pageUrl = "https://adventofcode.com/2024/day/1/input"
-    sessionCookie = "53616c7465645f5f4bbbbf992fb3a1b72dc263e30d9abbe167a35eb6c1f08188cc90b459bdf6e543ad0204885f37b4c0e8a4e8028fc3431453bcf646e1539e17"
+    sessionCookie = "53616c7465645f5fcdde4f3fd0b01830e3f05c8208a401c2f30aec774c7717cd1bdef9938620f66cc5bca2e04711d0325fdae3f47e7fb0e94bed8926d9ccc01b"
     text = getRawHtml(pageUrl, sessionCookie)
 
     lines = text.count('\n')
-    Arr1 = [0] * lines
-    Arr2 = [0] * lines
+    arr1 = [0] * lines
+    arr2 = [0] * lines
 
 
-    fillList(Arr1, Arr2, text)
+    #1st part of question
+    fillList(arr1, arr2, text)
 
     valueCounts = defaultdict(int)
 
-    Arr1.sort()
-    Arr2.sort()
+    arr1.sort()
+    arr2.sort()
 
     totalVal = 0
 
-    for x in range(len(Arr1)):
-        totalVal += abs(Arr1[x] - Arr2[x])
+
+    for x in range(len(arr1)):
+        totalVal += abs(arr1[x] - arr2[x])
         
     
     print(totalVal)
+
+    #2nd part
+    totalSimilarities = countSimilarity(arr1, arr2)
+    print(totalSimilarities)
 
 
 
