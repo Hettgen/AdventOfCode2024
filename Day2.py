@@ -24,22 +24,39 @@ def requestHtml(url, sessionCookie):
 
 def checkSafety(text):
 
+    lines = text.count("\n")
+    validatedLevels = [0] * lines
+
     while(len(text) > 0):
 
 
+
 def checkLine(line):
-    
+
     totalNumbers = line.count(' ') + 1
     numbers = [0] * totalNumbers
-    
-    for x in numbers:
-        numbers[x] = 
 
-    while(line > 0):
-        
+    for x in numbers:
+        space = line.find(' ')
+        numbers[x] = int(line[:space])
+        text = text[space+1:]
+
+
     
     #using boolean value to track if increasing or decreasing. Increasing == true, Decreasing == false
 
+    direction:bool = False if numbers[0] > numbers[1] else True
+
+    for x in range(1,len(numbers)):
+        
+        if(direction):
+            if(numbers[x] <= numbers[x-1] | numbers[x] > numbers[x-1] + 3):
+                return False
+        else:
+            if(numbers[x] >= numbers[x-1] | numbers[x] < numbers[x-1] - 3):
+                return False
+
+    return True
 
 
 

@@ -28,7 +28,7 @@ def fillList(Arr1, Arr2, text):
         line += 1
 
 
-        
+
 
 # Second Half of Question
 def countSimilarity(arr1, arr2):
